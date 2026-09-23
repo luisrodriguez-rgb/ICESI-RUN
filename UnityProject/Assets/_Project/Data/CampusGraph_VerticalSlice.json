@@ -1,0 +1,228 @@
+{
+  "graphId": "icesi_vertical_slice",
+  "name": "Vertical Slice: Portería 1 a Biblioteca Carvajal",
+  "scale": "1 unit = 1 meter",
+  "nodes": [
+    {
+      "id": "node_p1_gate",
+      "worldPosition": { "x": 0.0, "y": 18.0 },
+      "zoneId": "north_gate",
+      "nodeType": "SpawnPoint",
+      "connectedEdgeIds": ["edge_p1_bulevar"]
+    },
+    {
+      "id": "node_bulevar_n1",
+      "worldPosition": { "x": 0.0, "y": 14.0 },
+      "zoneId": "bulevar_norte",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_p1_bulevar", "edge_bulevar_edif_a", "edge_bulevar_saman_n"]
+    },
+    {
+      "id": "node_edif_a_nw",
+      "worldPosition": { "x": 6.0, "y": 14.0 },
+      "zoneId": "edificio_a",
+      "nodeType": "Corner",
+      "connectedEdgeIds": ["edge_bulevar_edif_a", "edge_edif_a_north", "edge_edif_a_west"]
+    },
+    {
+      "id": "node_edif_a_ne",
+      "worldPosition": { "x": 14.0, "y": 14.0 },
+      "zoneId": "edificio_a",
+      "nodeType": "Corner",
+      "connectedEdgeIds": ["edge_edif_a_north", "edge_edif_a_east"]
+    },
+    {
+      "id": "node_edif_a_se",
+      "worldPosition": { "x": 14.0, "y": 8.0 },
+      "zoneId": "edificio_a",
+      "nodeType": "Corner",
+      "connectedEdgeIds": ["edge_edif_a_east", "edge_edif_a_south"]
+    },
+    {
+      "id": "node_edif_a_sw",
+      "worldPosition": { "x": 6.0, "y": 8.0 },
+      "zoneId": "edificio_a",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_edif_a_west", "edge_edif_a_south", "edge_saman_n_a_sw", "edge_saman_east_a"]
+    },
+    {
+      "id": "node_saman_north",
+      "worldPosition": { "x": 0.0, "y": 8.0 },
+      "zoneId": "plaza_saman",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_bulevar_saman_n", "edge_saman_corridor", "edge_saman_n_a_sw"]
+    },
+    {
+      "id": "node_saman_center",
+      "worldPosition": { "x": 0.0, "y": 4.0 },
+      "zoneId": "plaza_saman",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_saman_corridor", "edge_saman_east", "edge_saman_lib"]
+    },
+    {
+      "id": "node_saman_east",
+      "worldPosition": { "x": 6.0, "y": 4.0 },
+      "zoneId": "plaza_saman",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_saman_east", "edge_saman_east_a", "edge_saman_east_lib"]
+    },
+    {
+      "id": "node_lib_north",
+      "worldPosition": { "x": 0.0, "y": 0.0 },
+      "zoneId": "biblioteca",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_saman_lib", "edge_lib_entrance"]
+    },
+    {
+      "id": "node_lib_center",
+      "worldPosition": { "x": 0.0, "y": -4.0 },
+      "zoneId": "biblioteca",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_lib_entrance", "edge_lib_hall"]
+    },
+    {
+      "id": "node_lib_east",
+      "worldPosition": { "x": 6.0, "y": -4.0 },
+      "zoneId": "biblioteca",
+      "nodeType": "Intersection",
+      "connectedEdgeIds": ["edge_lib_hall", "edge_saman_east_lib", "edge_lib_to_exit"]
+    },
+    {
+      "id": "node_exit_slice",
+      "worldPosition": { "x": 10.0, "y": -4.0 },
+      "zoneId": "biblioteca",
+      "nodeType": "PortalExit",
+      "connectedEdgeIds": ["edge_lib_to_exit"]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_p1_bulevar",
+      "nodeAId": "node_p1_gate",
+      "nodeBId": "node_bulevar_n1",
+      "corridorWidth": 4.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_bulevar_edif_a",
+      "nodeAId": "node_bulevar_n1",
+      "nodeBId": "node_edif_a_nw",
+      "corridorWidth": 3.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_bulevar_saman_n",
+      "nodeAId": "node_bulevar_n1",
+      "nodeBId": "node_saman_north",
+      "corridorWidth": 3.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_edif_a_north",
+      "nodeAId": "node_edif_a_nw",
+      "nodeBId": "node_edif_a_ne",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_edif_a_east",
+      "nodeAId": "node_edif_a_ne",
+      "nodeBId": "node_edif_a_se",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_edif_a_south",
+      "nodeAId": "node_edif_a_se",
+      "nodeBId": "node_edif_a_sw",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_edif_a_west",
+      "nodeAId": "node_edif_a_sw",
+      "nodeBId": "node_edif_a_nw",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_n_a_sw",
+      "nodeAId": "node_saman_north",
+      "nodeBId": "node_edif_a_sw",
+      "corridorWidth": 2.8,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_corridor",
+      "nodeAId": "node_saman_north",
+      "nodeBId": "node_saman_center",
+      "corridorWidth": 4.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_east",
+      "nodeAId": "node_saman_center",
+      "nodeBId": "node_saman_east",
+      "corridorWidth": 3.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_east_a",
+      "nodeAId": "node_saman_east",
+      "nodeBId": "node_edif_a_sw",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_lib",
+      "nodeAId": "node_saman_center",
+      "nodeBId": "node_lib_north",
+      "corridorWidth": 3.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_saman_east_lib",
+      "nodeAId": "node_saman_east",
+      "nodeBId": "node_lib_east",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_lib_entrance",
+      "nodeAId": "node_lib_north",
+      "nodeBId": "node_lib_center",
+      "corridorWidth": 3.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_lib_hall",
+      "nodeAId": "node_lib_center",
+      "nodeBId": "node_lib_east",
+      "corridorWidth": 2.5,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    },
+    {
+      "id": "edge_lib_to_exit",
+      "nodeAId": "node_lib_east",
+      "nodeBId": "node_exit_slice",
+      "corridorWidth": 3.0,
+      "speedMultiplier": 1.0,
+      "isBlocked": false
+    }
+  ]
+}
