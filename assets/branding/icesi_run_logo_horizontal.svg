@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 280" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C18"/>
+      <stop offset="50%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#121D3A"/>
+    </linearGradient>
+
+    <!-- Arcade Neon Yellow Gradient -->
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FFF066"/>
+      <stop offset="40%" stop-color="#FFB703"/>
+      <stop offset="100%" stop-color="#FB8500"/>
+    </linearGradient>
+
+    <!-- Electric Icesi Blue Gradient -->
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="60%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Kinetic Trail Lines Gradient -->
+    <linearGradient id="trailGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <!-- Soft Glow Filter for Arcade Lighting Effect -->
+    <filter id="neonBloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="intenseBloom" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="9" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base Canvas -->
+  <rect width="920" height="280" rx="16" fill="url(#bgGrad)"/>
+  
+  <!-- Subtle Architectural Campus Blueprint Grid -->
+  <g opacity="0.07" stroke="#38BDF8" stroke-width="1.2">
+    <line x1="40" y1="40" x2="880" y2="40"/>
+    <line x1="40" y1="100" x2="880" y2="100"/>
+    <line x1="40" y1="160" x2="880" y2="160"/>
+    <line x1="40" y1="220" x2="880" y2="220"/>
+    
+    <line x1="100" y1="20" x2="100" y2="260"/>
+    <line x1="180" y1="20" x2="180" y2="260"/>
+    <line x1="260" y1="20" x2="260" y2="260"/>
+    <line x1="400" y1="20" x2="400" y2="260"/>
+    <line x1="560" y1="20" x2="560" y2="260"/>
+    <line x1="720" y1="20" x2="720" y2="260"/>
+  </g>
+
+  <!-- ISOTYPE: Option A "The Escape Circuit" (Shifted forward at -8° shear) -->
+  <g id="Isotype_EscapeCircuit" transform="translate(48, 30)">
+    
+    <!-- Outer Arcade Octagon / Pac-Man Frame with Escape Gap -->
+    <!-- Formed by deliberate campus corridor geometries and 45° chamfers -->
+    <path d="M 125,18 
+             L 70,18 
+             L 22,66 
+             L 22,154 
+             L 70,202 
+             L 132,202 
+             L 178,156 
+             L 142,156 
+             L 110,188 
+             L 78,188 
+             L 38,148 
+             L 38,72 
+             L 78,32 
+             L 125,32 
+             Z" 
+          fill="url(#blueGlow)"/>
+
+    <!-- Corridor Circuit System (Negative space & interior corridors) -->
+    <!-- North Wall corridor -->
+    <path d="M 100,48 L 74,48 L 54,68 L 54,104 L 70,104 L 70,74 L 94,58 Z" fill="#0284C7" opacity="0.6"/>
+    
+    <!-- Internal Campus Pathways (Node lines) -->
+    <g stroke="url(#goldGlow)" stroke-width="4" stroke-linecap="square" stroke-linejoin="miter">
+      <!-- Circuit track 1 -->
+      <polyline points="54,142 80,142 96,126 122,126"/>
+      <!-- Circuit track 2 -->
+      <polyline points="84,80 102,98 102,110"/>
+    </g>
+
+    <!-- Escape Vector / Player Particle (The Active Runner Node) -->
+    <!-- Kinetic Trails -->
+    <line x1="90" y1="126" x2="135" y2="126" stroke="url(#trailGrad)" stroke-width="6" stroke-linecap="round"/>
+    <line x1="110" y1="114" x2="148" y2="114" stroke="url(#trailGrad)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+    <line x1="105" y1="138" x2="142" y2="138" stroke="url(#trailGrad)" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
+
+    <!-- Vector Arrowhead / Escape Pulse -->
+    <polygon points="172,126 142,106 148,126 142,146" fill="url(#goldGlow)" filter="url(#neonBloom)"/>
+
+    <!-- Player Origin Beacon (Samán central node) -->
+    <circle cx="80" cy="142" r="5" fill="#FF0054" filter="url(#intenseBloom)"/>
+    <circle cx="80" cy="142" r="2.5" fill="#FFFFFF"/>
+
+    <!-- Upper Escape Boundary Marker -->
+    <polygon points="184,78 152,78 168,62" fill="url(#blueGlow)"/>
+  </g>
+
+  <!-- LOGOTYPE SECTION (Carefully aligned typographical lockup) -->
+  <g id="Logotype_Text" transform="translate(270, 0)">
+    
+    <!-- "ICESI" Institutional Technical Display -->
+    <g transform="translate(0, 134)">
+      <!-- Tech accent line above ICESI -->
+      <rect x="2" y="-56" width="34" height="4" fill="#38BDF8" opacity="0.8"/>
+      <line x1="42" y1="-54" x2="270" y2="-54" stroke="#1E293B" stroke-width="2"/>
+      
+      <text x="0" y="0" 
+            font-family="'Chivo', 'Space Grotesk', 'Montserrat', 'Segoe UI', sans-serif" 
+            font-size="64" 
+            font-weight="900" 
+            letter-spacing="9" 
+            fill="#F8FAFC">
+        ICESI
+      </text>
+    </g>
+
+    <!-- Structural Architectural Divider -->
+    <g transform="translate(305, 74)">
+      <polygon points="8,0 2,120 -4,120 2,0" fill="#FFB703" filter="url(#neonBloom)"/>
+      <circle cx="5" cy="135" r="3" fill="#FF0054"/>
+    </g>
+
+    <!-- "RUN" High-Velocity Arcade Wordmark -->
+    <g transform="translate(330, 142) skewX(-12)">
+      <!-- Drop / Under glow -->
+      <text x="0" y="0" 
+            font-family="'Cabinet Grotesk', 'Impact', 'Arial Black', sans-serif" 
+            font-size="94" 
+            font-style="italic" 
+            font-weight="900" 
+            letter-spacing="4" 
+            fill="#FB8500" 
+            opacity="0.4"
+            filter="url(#intenseBloom)">
+        RUN
+      </text>
+      <!-- Main Text Face -->
+      <text x="0" y="0" 
+            font-family="'Cabinet Grotesk', 'Impact', 'Arial Black', sans-serif" 
+            font-size="94" 
+            font-style="italic" 
+            font-weight="900" 
+            letter-spacing="4" 
+            fill="url(#goldGlow)">
+        RUN
+      </text>
+
+      <!-- Arcade Speed Cut (Negative Stencil Line across RUN) -->
+      <line x1="-12" y1="-32" x2="230" y2="-32" stroke="#070C18" stroke-width="4.5"/>
+      <!-- Energetic Spark Node -->
+      <polygon points="234,-32 222,-44 226,-32 222,-20" fill="#FFF066" filter="url(#neonBloom)"/>
+    </g>
+
+    <!-- Subtitle Meta: Campus Arcade Anchor -->
+    <g transform="translate(2, 194)">
+      <text x="0" y="0" 
+            font-family="'JetBrains Mono', 'Roboto Mono', monospace" 
+            font-size="13" 
+            font-weight="700" 
+            letter-spacing="7.5" 
+            fill="#38BDF8" 
+            opacity="0.95">
+        CAMPUS SURVIVAL LABYRINTH
+      </text>
+      
+      <!-- Mini Tech Status Dots -->
+      <g transform="translate(345, -4)">
+        <circle cx="0" cy="0" r="2.5" fill="#38BDF8" opacity="0.4"/>
+        <circle cx="12" cy="0" r="2.5" fill="#38BDF8" opacity="0.4"/>
+        <circle cx="24" cy="0" r="2.5" fill="#00F0FF" opacity="0.9"/>
+        <rect x="36" y="-3" width="22" height="6" rx="2" fill="#FF0054"/>
+      </g>
+    </g>
+  </g>
+</svg>
