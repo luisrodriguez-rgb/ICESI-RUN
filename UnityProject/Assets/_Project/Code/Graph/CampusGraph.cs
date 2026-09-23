@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace IcesiRun.Graph
 {
-    [CreateAssetMenu(fileName = "CampusGraph_Icesi", menuMenuName = "IcesiRun/Campus Graph")]
+    [CreateAssetMenu(fileName = "CampusGraph_Icesi", menuName = "IcesiRun/Campus Graph")]
     public class CampusGraph : ScriptableObject
     {
         public List<CampusNode> nodes = new List<CampusNode>();
