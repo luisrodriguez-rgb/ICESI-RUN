@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ICESI RUN — Escapa del Campus</title>
+  <meta name="description" content="Arcade de persecución top-down 2D ambientado en el campus real de la Universidad Icesi. Explora, recolecta y escapa.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Game Canvas -->
+    <canvas id="game-canvas"></canvas>
+
+    <!-- In-Game Minimalist HUD -->
+    <header id="game-hud" class="hud-layer hidden">
+      <div class="hud-panel hud-left">
+        <div class="hud-metric">
+          <span class="hud-label">SCORE</span>
+          <span id="score-display" class="hud-value font-mono">00000</span>
+        </div>
+        <div class="hud-metric lives-metric">
+          <span class="hud-label">VIDAS</span>
+          <div id="lives-display" class="lives-indicator">
+            <span class="life-pip active"></span>
+            <span class="life-pip active"></span>
+            <span class="life-pip active"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact Mission Checklist -->
+      <div class="hud-panel hud-center">
+        <div class="mission-tag">MISIÓN</div>
+        <div class="mission-checklist">
+          <div id="item-book" class="mission-item pending">
+            <span class="status-dot"></span>
+            <span class="item-name">📘 Biblioteca (Libro)</span>
+          </div>
+          <div id="item-coffee" class="mission-item pending">
+            <span class="status-dot"></span>
+            <span class="item-name">☕ Cafetería (Café)</span>
+          </div>
+          <div id="item-gate" class="mission-item locked">
+            <span class="status-dot"></span>
+            <span class="item-name">🔒 Portería 2 (Salida)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hud-panel hud-right">
+        <div class="hud-metric">
+          <span class="hud-label">TIEMPO</span>
+          <span id="timer-display" class="hud-value font-mono">02:30</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Campus Closing Alert Banner -->
+    <div id="alert-banner" class="alert-banner hidden">
+      <span class="alert-icon">⚠️</span>
+      <span id="alert-text">¡CAMPUS EN CIERRE! ¡CORRE A LA PORTERÍA 2!</span>
+    </div>
+
+    <!-- Non-Intrusive Lore Toast Notification -->
+    <div id="lore-toast" class="lore-toast hidden">
+      <div class="lore-icon">📍</div>
+      <div class="lore-content">
+        <strong id="lore-title">Biblioteca Carvajal</strong>
+        <p id="lore-text">Centro neurálgico del campus y zona de estudio silencioso.</p>
+      </div>
+    </div>
+
+    <!-- Mobile Virtual On-Screen Controls -->
+    <div id="mobile-controls" class="mobile-controls hidden">
+      <div class="dpad-container">
+        <button id="btn-up" class="dpad-btn up" aria-label="Arriba">▲</button>
+        <button id="btn-left" class="dpad-btn left" aria-label="Izquierda">◀</button>
+        <button id="btn-right" class="dpad-btn right" aria-label="Derecha">▶</button>
+        <button id="btn-down" class="dpad-btn down" aria-label="Abajo">▼</button>
+      </div>
+      <button id="btn-sprint" class="action-btn" aria-label="Sprint">⚡ TURBO</button>
+    </div>
+
+    <!-- Overlay Screens -->
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen-overlay">
+      <div class="screen-card">
+        <div class="brand-badge">UNIVERSIDAD ICESI</div>
+        <h1 class="game-title">ICESI RUN</h1>
+        <p class="game-subtitle">ESCAPA DEL CAMPUS</p>
+        
+        <div class="briefing-box">
+          <h3>OBJETIVO DE LA PARTIDA</h3>
+          <ul>
+            <li><span>📍</span> <strong>Inicias en Portería 1</strong> (Avenida Cañasgordas).</li>
+            <li><span>📘</span> <strong>Recoge el Libro de Reserva</strong> en la Biblioteca Carvajal.</li>
+            <li><span>☕</span> <strong>Toma el Café de Shillers</strong> en la Cafetería Central (+turbo temporal).</li>
+            <li><span>🛺</span> <strong>Evita al Vigilante</strong> (patrulla fija) y al <strong>Monitor</strong> (perseguidor por proximidad).</li>
+            <li><span>🦎</span> <strong>Cuidado con la Iguana</strong> que merodea el Samán.</li>
+            <li><span>🚪</span> <strong>¡Escapa por la Portería 2</strong> antes de que cierren las puertas!</li>
+          </ul>
+        </div>
+
+        <div class="controls-hint">
+          <p><strong>Controles:</strong> Flechas o <code>WASD</code> para moverte. En móvil, usa el D-Pad táctil.</p>
+        </div>
+
+        <button id="btn-start" class="primary-btn">COMENZAR PARTIDA</button>
+      </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victory-screen" class="screen-overlay hidden">
+      <div class="screen-card victory-card">
+        <div class="victory-badge">¡LOGRASTE ESCAPAR!</div>
+        <h2 class="screen-heading">¡GRADUADO DE PANCE!</h2>
+        <p class="screen-desc">Llegaste a tiempo a la Portería 2 y saliste del campus sano y salvo.</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Puntaje Final</span>
+            <span id="final-score" class="stat-value font-mono">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Tiempo Sobrante</span>
+            <span id="final-time" class="stat-value font-mono">00:00</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Créditos Recogidos</span>
+            <span id="final-credits" class="stat-value font-mono">0/0</span>
+          </div>
+        </div>
+
+        <button id="btn-play-again" class="primary-btn">JUGAR DE NUEVO</button>
+      </div>
+    </div>
+
+    <!-- Game Over Screen -->
+    <div id="game-over-screen" class="screen-overlay hidden">
+      <div class="screen-card gameover-card">
+        <div class="danger-badge">QUEDASTE ATRAPADO</div>
+        <h2 class="screen-heading">FIN DEL SEMESTRE</h2>
+        <p id="game-over-reason" class="screen-desc">El vigilante te interceptó antes de que pudieras salir del campus.</p>
+
+        <div class="stats-grid">
+          <div class="stat-item">
+            <span class="stat-label">Puntaje</span>
+            <span id="go-score" class="stat-value font-mono">0</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-label">Créditos</span>
+            <span id="go-credits" class="stat-value font-mono">0</span>
+          </div>
+        </div>
+
+        <button id="btn-retry" class="primary-btn retry-btn">REINTENTAR</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
