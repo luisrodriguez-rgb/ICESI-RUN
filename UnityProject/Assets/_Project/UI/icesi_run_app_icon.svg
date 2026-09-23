@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Deep Navy Gradient -->
+    <linearGradient id="iconBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C18"/>
+      <stop offset="50%" stop-color="#0B132B"/>
+      <stop offset="100%" stop-color="#121D3A"/>
+    </linearGradient>
+
+    <!-- Arcade Neon Gold Gradient -->
+    <linearGradient id="iconGoldGlow" x1="0%" y1="0%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#FFF066"/>
+      <stop offset="40%" stop-color="#FFB703"/>
+      <stop offset="100%" stop-color="#FB8500"/>
+    </linearGradient>
+
+    <!-- Electric Icesi Blue Gradient -->
+    <linearGradient id="iconBlueGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="60%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+
+    <!-- Kinetic Trail Lines Gradient -->
+    <linearGradient id="iconTrailGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#38BDF8" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Outer Rim Stroke Gradient -->
+    <linearGradient id="iconRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.4"/>
+      <stop offset="50%" stop-color="#1E293B" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#FB8500" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Soft Glow Filter for Arcade Lighting Effect -->
+    <filter id="iconNeonBloom" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="iconIntenseBloom" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Base Canvas (Rounded Squircle for 1:1 App Icon / Favicon) -->
+  <rect width="512" height="512" rx="112" fill="url(#iconBgGrad)"/>
+  <rect width="510" height="510" x="1" y="1" rx="111" fill="none" stroke="url(#iconRimGrad)" stroke-width="2.5"/>
+
+  <!-- Subtle Architectural Campus Blueprint Grid -->
+  <g opacity="0.08" stroke="#38BDF8" stroke-width="1.5">
+    <line x1="64" y1="128" x2="448" y2="128"/>
+    <line x1="64" y1="256" x2="448" y2="256"/>
+    <line x1="64" y1="384" x2="448" y2="384"/>
+    
+    <line x1="128" y1="64" x2="128" y2="448"/>
+    <line x1="256" y1="64" x2="256" y2="448"/>
+    <line x1="384" y1="64" x2="384" y2="448"/>
+  </g>
+
+  <!-- ISOTYPE: "The Escape Circuit" (Centered & Heroic Scale for 1:1 Icon) -->
+  <g id="Isotype_EscapeCircuit_Icon" transform="translate(35, 20) scale(2.15)">
+    
+    <!-- Outer Arcade Octagon / Pac-Man Frame with Escape Gap -->
+    <!-- Formed by deliberate campus corridor geometries and 45° chamfers -->
+    <path d="M 125,18 
+             L 70,18 
+             L 22,66 
+             L 22,154 
+             L 70,202 
+             L 132,202 
+             L 178,156 
+             L 142,156 
+             L 110,188 
+             L 78,188 
+             L 38,148 
+             L 38,72 
+             L 78,32 
+             L 125,32 
+             Z" 
+          fill="url(#iconBlueGlow)"/>
+
+    <!-- Corridor Circuit System (Negative space & interior corridors) -->
+    <!-- North Wall corridor -->
+    <path d="M 100,48 L 74,48 L 54,68 L 54,104 L 70,104 L 70,74 L 94,58 Z" fill="#0284C7" opacity="0.6"/>
+    
+    <!-- Internal Campus Pathways (Node lines) -->
+    <g stroke="url(#iconGoldGlow)" stroke-width="4.5" stroke-linecap="square" stroke-linejoin="miter">
+      <!-- Circuit track 1 -->
+      <polyline points="54,142 80,142 96,126 122,126"/>
+      <!-- Circuit track 2 -->
+      <polyline points="84,80 102,98 102,110"/>
+    </g>
+
+    <!-- Escape Vector / Player Particle (The Active Runner Node) -->
+    <!-- Kinetic Trails -->
+    <line x1="88" y1="126" x2="136" y2="126" stroke="url(#iconTrailGrad)" stroke-width="7" stroke-linecap="round"/>
+    <line x1="108" y1="114" x2="148" y2="114" stroke="url(#iconTrailGrad)" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+    <line x1="103" y1="138" x2="143" y2="138" stroke="url(#iconTrailGrad)" stroke-width="3.5" stroke-linecap="round" opacity="0.65"/>
+
+    <!-- Vector Arrowhead / Escape Pulse -->
+    <polygon points="174,126 142,104 148,126 142,148" fill="url(#iconGoldGlow)" filter="url(#iconNeonBloom)"/>
+
+    <!-- Player Origin Beacon (Samán central node) -->
+    <circle cx="80" cy="142" r="5.5" fill="#FF0054" filter="url(#iconIntenseBloom)"/>
+    <circle cx="80" cy="142" r="2.5" fill="#FFFFFF"/>
+
+    <!-- Upper Escape Boundary Marker -->
+    <polygon points="184,78 152,78 168,62" fill="url(#iconBlueGlow)"/>
+  </g>
+
+  <!-- Technical Branding Micro-Tag (Bottom subtle anchor) -->
+  <g transform="translate(256, 468)">
+    <text x="0" y="0" 
+          text-anchor="middle"
+          font-family="'Chivo', 'Space Grotesk', 'Segoe UI', sans-serif" 
+          font-size="20" 
+          font-weight="900" 
+          letter-spacing="10" 
+          fill="#38BDF8" 
+          opacity="0.8">
+      ICESI
+    </text>
+  </g>
+</svg>
