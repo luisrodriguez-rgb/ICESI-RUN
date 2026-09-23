@@ -346,7 +346,7 @@ html, body {
 }
 
 .screen-card {
-  max-width: 480px;
+  max-width: 520px;
   width: 100%;
   background: #0d1929;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -354,6 +354,18 @@ html, body {
   padding: 32px;
   text-align: center;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.briefing-icon {
+  font-size: 15px;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.briefing-text {
+  flex: 1;
+  text-align: left;
 }
 
 .brand-badge {
